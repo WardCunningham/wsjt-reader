@@ -1,0 +1,20 @@
+{
+  "name": "wsjt-reader",
+  "version": "1.0.0",
+  "description": "Decode UDP datagrams from WSJT-X",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "wsjt",
+    "digital",
+    "ham",
+    "radio",
+    "ft8",
+    "decode"
+  ],
+  "author": "Ward Cunningham",
+  "repository": "https://github.com/WardCunningham/wsjt-reader",
+  "license": "ISC"
+}
