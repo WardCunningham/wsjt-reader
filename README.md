@@ -17,4 +17,10 @@ Return protocol version, expect 2.
 Return type of msg, 2 for decode.
 
 ## msg.time()
-Return decode time in milliseconds since epoch.
+Return decode time in milliseconds since midnight utc.
+
+## msg.freq()
+Return freq within passband.
+
+## msg.copy()
+Return text of message decoded.

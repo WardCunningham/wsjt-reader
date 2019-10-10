@@ -1,6 +1,6 @@
 {
   "name": "wsjt-reader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Decode UDP datagrams from WSJT-X",
   "main": "index.js",
   "scripts": {
