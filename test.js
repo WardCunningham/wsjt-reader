@@ -41,3 +41,57 @@ for (let file in expect) {
   assert(e.freq === r.freq())
   assert(e.copy === r.copy())
 }
+
+
+
+files = ['type-1-0.data', 'type-1-1.data', 'type-1-2.data', 'type-1-3.data', 'type-1-4.data', 'type-1-5.data', 'type-1-6.data', 'type-1-7.data', 'type-1-8.data', 'type-1-9.data']
+for (let file of files) {
+  console.log("\n", file)
+  var r = new Reader(fs.readFileSync(`data/${file}`))
+  var i = 0
+  function buf(a,n) {
+    console.log(a, r.data.slice(i,i+n))
+    i += n
+  }
+  function bit(a) {
+    return num(a,1)
+  }
+  function num(a,n) {
+    if(n>6) {
+      i += (n-6)
+      n = 6
+    }
+    let k = r.data.readUIntBE(i,n)
+    console.log(a, k)
+    i += n
+    return k
+  }
+  function str(a) {
+    let k = r.data.readUIntBE(i,4)
+    i += 4
+    let s = r.data.toString('utf8',i,i+k)
+    i += k
+    console.log(a,k,s)
+  }
+
+  buf('head',8)
+  num('type',4)
+  str('id')
+  num('freq',8)
+  str('mode')
+  str('dx call')
+  str('report')
+  str('tx mode')
+  bit('tx enabled')
+  bit('transmitting')
+  bit('decoding')
+  num('rx df',4)
+  num('dx df',4)
+  str('de call')
+  str('de grid')
+  // bit('tx watchdog')
+  str('sub-mode')
+  bit('fast mode')
+  // num('special ops mode',1)
+  console.log(r.data.slice(i))
+}
